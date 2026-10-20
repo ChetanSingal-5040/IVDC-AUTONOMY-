@@ -54,19 +54,13 @@ else:
     lane_bitmap = np.full((height, width), 255, dtype=np.uint8)
 
     # Lane = road between the left road edge and the white centre line
-    lane_region = np.array([[
-        (0, 435),       # left road edge (image border)
-        (100, 395),
-        (200, 345),
-        (300, 293),
-        (400, 262),
-        (490, 257),     # top of white line
-        (445, 272),
-        (425, 300),     # white line curves down...
-        (430, 350),
-        (445, 420),
-        (470, 541),     # ...to the bottom of the image
-        (0, 541)        # bottom-left
+  lane_region = np.array([[
+        (0, 541),       # bottom-left
+        (0, 435),       # left edge of road
+        (400, 262),     # far left of road
+        (495, 256),     # top, where the road meets the horizon
+        (680, 345),     # right edge of road 
+        (679, 541)      # bottom-right 
     ]], dtype=np.int32)
 
     # Fill the lane region BLACK
